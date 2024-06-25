@@ -56,9 +56,17 @@ class _LoginState extends State<Login> {
               const Row(
                 children: [
                   Text(
-                    'Log in to ChatMate',
+                    'Log in to ',
                     style: TextStyle(
                       color: Colors.white,
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    'ChatMate',
+                    style: TextStyle(
+                      color: Colors.green,
                       fontSize: 32,
                       fontWeight: FontWeight.bold,
                     ),
