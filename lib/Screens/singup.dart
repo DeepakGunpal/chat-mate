@@ -16,12 +16,12 @@ class _SingupscreenState extends State<Singupscreen> {
         foregroundColor: Colors.white,
       ),
 
-      body: const SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.fromLTRB(21, 0, 21, 0),
+          padding: const EdgeInsets.fromLTRB(21, 0, 21, 0),
           child: Column(
             children: [
-              Row(
+              const Row(
                 children: [
                   Text(
                     'Let\u0027s get',
@@ -41,8 +41,8 @@ class _SingupscreenState extends State<Singupscreen> {
                   ),
                 ],
               ),
-              SizedBox(height: 30),
-              Row(
+              const SizedBox(height: 30),
+              const Row(
                 crossAxisAlignment: CrossAxisAlignment
                     .center, // Align items vertically centered
                 children: [
@@ -98,11 +98,11 @@ class _SingupscreenState extends State<Singupscreen> {
                                 ),
                               ],
                             ),
-                            const SizedBox(height: 5),
+                            SizedBox(height: 5),
                             TextField(
-                              style: const TextStyle(
-                                  color: Colors.white, fontSize: 15),
-                              decoration: const InputDecoration(
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 15),
+                              decoration: InputDecoration(
                                 hintText: 'Enter your email',
                                 hintStyle: TextStyle(color: Colors.grey),
                                 border: OutlineInputBorder(
@@ -113,11 +113,11 @@ class _SingupscreenState extends State<Singupscreen> {
                             ),
                           ],
                         ),
-                        const SizedBox(height: 15),
+                        SizedBox(height: 15),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Row(
+                            Row(
                               children: [
                                 Text(
                                   "Password",
@@ -152,6 +152,50 @@ class _SingupscreenState extends State<Singupscreen> {
                   ),
                 ],
               ),
+              ElevatedButton(
+                // style:OutlinedButton.styleFrom(backgroundColor: Colors.white,),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5),
+                    // Adjust the radius as needed
+                  ),
+                ),
+                onPressed: () {},
+                child: const Center(
+                  child: Text(
+                    "Login",
+                    style: TextStyle(
+                        color: Colors.black, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+              const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Divider(
+                        color: Colors.grey,
+                        thickness: 1,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Text(
+                        'OR',
+                        style: TextStyle(color: Colors.grey),
+                      ),
+                    ),
+                    Expanded(
+                      child: Divider(
+                        color: Colors.grey,
+                        thickness: 1,
+                      ),
+                    ),
+                  ],
+                ),
+              )
             ],
           ),
         ),
