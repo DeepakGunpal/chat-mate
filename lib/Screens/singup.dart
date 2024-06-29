@@ -1,3 +1,4 @@
+import 'package:chat_app/Screens/login.dart';
 import 'package:flutter/material.dart';
 
 class Singupscreen extends StatefulWidget {
@@ -7,6 +8,30 @@ class Singupscreen extends StatefulWidget {
 }
 
 class _SingupscreenState extends State<Singupscreen> {
+  _OpenSingupPage(BuildContext context) async {
+    print("Login function started");
+    Navigator.of(context).push(
+      // MaterialPageRoute(builder: (BuildContext context)=>const Login())
+      PageRouteBuilder(
+        pageBuilder: (context, animation, secondaryAnimation) => const Login(),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          const begin = 0.0;
+          const end = 1.0;
+          const curve = Curves.ease;
+
+          var tween =
+              Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+          var opacityAnimation = animation.drive(tween);
+
+          return FadeTransition(
+            opacity: opacityAnimation,
+            child: child,
+          );
+        },
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,7 +68,7 @@ class _SingupscreenState extends State<Singupscreen> {
               ),
               const SizedBox(height: 30),
               Container(
-                padding: const EdgeInsets.all(15),
+                padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
                     shape: BoxShape.rectangle,
                     border: const Border(
@@ -181,7 +206,7 @@ class _SingupscreenState extends State<Singupscreen> {
                         backgroundColor: Colors.white,
                         // foregroundColor: Colors.white,
                         shape: RoundedRectangleBorder(
-                          side: BorderSide(color: Colors.grey),
+                          side: const BorderSide(color: Colors.grey),
                           borderRadius: BorderRadius.circular(5),
                           // Adjust the radius as needed
                         ),
@@ -223,7 +248,73 @@ class _SingupscreenState extends State<Singupscreen> {
                     ),
                   ],
                 ),
-              )
+              ),
+              ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.black,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5),
+                    side: const BorderSide(
+                      color: Colors.grey,
+                      strokeAlign: BorderSide.strokeAlignInside,
+                    ),
+                  ),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(0),
+                      child: Image.asset(
+                        "lib/assets/images/google.png",
+                        width: 20,
+                        height: 20,
+                      ),
+                    ),
+
+                    // Add spacing between the icon and text
+                    const Expanded(
+                      // child: Center(
+                      child: Text(
+                        "Continue with Google",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    // ),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              Row(
+                mainAxisAlignment:
+                    MainAxisAlignment.center, // Center the content horizontally
+                children: [
+                  const Text(
+                    "Don't have an account?",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.grey),
+                  ),
+                  const SizedBox(
+                      width: 5), // Add spacing between texts if needed
+                  GestureDetector(
+                    onTap: () {
+                      _OpenSingupPage(context);
+                    },
+                    child: const Text(
+                      "Signup",
+                      style: TextStyle(color: Colors.green),
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),

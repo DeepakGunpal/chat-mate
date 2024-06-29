@@ -42,9 +42,9 @@ class SplashScreenState extends State<SplashScreen>
   }
 
   _OpenLoginPage(BuildContext context, String pageName) async {
-    Widget page = Login();
+    Widget page = const Login();
     if (pageName == "Signup") {
-      page = Singupscreen();
+      page = const Singupscreen();
     }
     print("Login function started");
     Navigator.of(context).push(

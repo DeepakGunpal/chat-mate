@@ -73,7 +73,7 @@ class _LoginState extends State<Login> {
                   ),
                 ],
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 30),
               Column(
                 children: [
                   const Row(
@@ -215,7 +215,7 @@ class _LoginState extends State<Login> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Padding(
-                      padding: EdgeInsets.all(0),
+                      padding: const EdgeInsets.all(0),
                       child: Image.asset(
                         "lib/assets/images/google.png",
                         width: 20,
@@ -240,7 +240,7 @@ class _LoginState extends State<Login> {
                 ),
               ),
               const SizedBox(
-                height: 5,
+                height: 8,
               ),
               // const Center(
               Row(
