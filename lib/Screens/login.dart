@@ -13,22 +13,41 @@ class _LoginState extends State<Login> {
       backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.black,
-        automaticallyImplyLeading: false,
+        // automaticallyImplyLeading: false,
+        foregroundColor: Colors.white,
       ),
       body: const Column(
         children: [
-          Padding(
-            padding: EdgeInsets.fromLTRB(12.0, 0, 0, 0),
-            child: Column(
-              children: [
-                Text(
-                  'Log In',
+          Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                child: Text(
+                  'Log In to ChatMate',
                   style: TextStyle(
                       color: Colors.white,
-                      fontSize: 35,
+                      fontSize: 32,
                       fontWeight: FontWeight.bold),
                 ),
-                // Form(child: )
+              )
+            ],
+          ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(21, 0, 0, 0),
+            child: Column(
+              children: [
+                TextField(
+                  //  controller: _titleController,
+                  decoration: InputDecoration(
+                    labelText: 'Title',
+                    hintText: 'Add name of the place',
+                    hintTextDirection: TextDirection.rtl,
+                    hintStyle: TextStyle(color: Colors.grey),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10))),
+                  ),
+                  // style: GoogleFonts.aBeeZee(color: Colors.white,fontSize: 20),
+                ),
               ],
             ),
           )
