@@ -13,6 +13,7 @@ class _LoginState extends State<Login> {
   final TextEditingController _passwordController = TextEditingController();
   bool peakPassword = false;
   Widget eyeValue = const Icon(CupertinoIcons.eye_fill);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,7 +60,7 @@ class _LoginState extends State<Login> {
                     controller: _usernameController,
                     style: const TextStyle(color: Colors.white),
                     decoration: const InputDecoration(
-                      hintText: 'Enter your username',
+                      hintText: 'Enter your email',
                       hintStyle: TextStyle(color: Colors.grey),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -77,7 +78,10 @@ class _LoginState extends State<Login> {
                     children: [
                       Text(
                         "Password",
-                        style: TextStyle(color: Colors.white, fontSize: 18),
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -90,26 +94,20 @@ class _LoginState extends State<Login> {
                     obscureText: peakPassword,
                     decoration: InputDecoration(
                       hintText: 'Enter Password',
-                      icon: Column(
-                        children: [
-                          InkWell(
-                            onTap: () {
-                              setState(() {
-                                peakPassword = true;
-                                eyeValue =
-                                    const Icon(CupertinoIcons.eye_slash_fill);
-                              });
-                            },
-                            child: InkWell(
-                                onTap: () {
-                                  setState(() {
-                                    eyeValue =
-                                        const Icon(CupertinoIcons.eye_fill);
-                                  });
-                                },
-                                child: eyeValue),
-                          ),
-                        ],
+                      suffixIcon: InkWell(
+                        onTap: () {
+                          setState(() {
+                            peakPassword = !peakPassword;
+                          });
+                        },
+                        // Display the current eye icon based on peakPassword
+                        child: Icon(
+                          peakPassword
+                              ? CupertinoIcons
+                                  .eye_fill // Show icon when password is visible
+                              : CupertinoIcons
+                                  .eye_slash_fill, // Hide icon when password is hidden
+                        ),
                       ),
                       hintStyle: const TextStyle(color: Colors.grey),
                       border: const OutlineInputBorder(
@@ -117,8 +115,6 @@ class _LoginState extends State<Login> {
                       ),
                     ),
                   ),
-                  // Add code for password field (similar to username)
-                  // Add code for login button and functionality
                 ],
               ),
               const SizedBox(
@@ -166,6 +162,34 @@ class _LoginState extends State<Login> {
                       ),
                     ),
                   ],
+                ),
+              ),
+              ElevatedButton(
+                // style:OutlinedButton.styleFrom(backgroundColor: Colors.white,),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.black,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5),
+                    side: const BorderSide(
+                        color: Colors.grey,
+                        strokeAlign: BorderSide.strokeAlignInside),
+                    // Adjust the radius as needed
+                  ),
+                ),
+                onPressed: () {},
+                child: const Center(
+                  child: Column(
+                    children: [
+                      Icon(Icons.golf_course),
+                      Center(
+                        child: Text(
+                          "Google",
+                          style: TextStyle(
+                              color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],
