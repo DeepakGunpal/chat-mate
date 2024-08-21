@@ -66,6 +66,7 @@ flutter:
     - lib\assets\images\chat.png
     - lib\assets\images\shadow.png
     - lib\assets\images\chat2.png
+    - lib\assets\images\google.png
     # - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

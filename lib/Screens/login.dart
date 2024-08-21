@@ -165,31 +165,44 @@ class _LoginState extends State<Login> {
                 ),
               ),
               ElevatedButton(
-                // style:OutlinedButton.styleFrom(backgroundColor: Colors.white,),
+                onPressed: () {},
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.black,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(5),
                     side: const BorderSide(
-                        color: Colors.grey,
-                        strokeAlign: BorderSide.strokeAlignInside),
-                    // Adjust the radius as needed
+                      color: Colors.grey,
+                      strokeAlign: BorderSide.strokeAlignInside,
+                    ),
                   ),
                 ),
-                onPressed: () {},
-                child: const Center(
-                  child: Column(
-                    children: [
-                      Icon(Icons.golf_course),
-                      Center(
-                        child: Text(
-                          "Google",
-                          style: TextStyle(
-                              color: Colors.white, fontWeight: FontWeight.bold),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.all(0),
+                      child: Image.asset(
+                        "lib/assets/images/google.png",
+                        width: 20,
+                        height: 20,
+                      ),
+                    ),
+
+                    // Add spacing between the icon and text
+                    const Expanded(
+                      // child: Center(
+                      child: Text(
+                        "Google",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                    // ),
+                  ],
                 ),
               ),
             ],
