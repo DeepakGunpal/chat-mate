@@ -11,6 +11,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'ChatMate',
       theme: ThemeData().copyWith(
         colorScheme: ColorScheme.fromSeed(

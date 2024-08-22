@@ -1,3 +1,4 @@
+import 'package:chat_app/Screens/singup.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -11,8 +12,33 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  bool peakPassword = false;
+  bool peakPassword = true;
   Widget eyeValue = const Icon(CupertinoIcons.eye_fill);
+
+  _OpenSingupPage(BuildContext context) async {
+    print("Login function started");
+    Navigator.of(context).push(
+      // MaterialPageRoute(builder: (BuildContext context)=>const Login())
+      PageRouteBuilder(
+        pageBuilder: (context, animation, secondaryAnimation) =>
+            const Singupscreen(),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          const begin = 0.0;
+          const end = 1.0;
+          const curve = Curves.ease;
+
+          var tween =
+              Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+          var opacityAnimation = animation.drive(tween);
+
+          return FadeTransition(
+            opacity: opacityAnimation,
+            child: child,
+          );
+        },
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -193,7 +219,7 @@ class _LoginState extends State<Login> {
                     const Expanded(
                       // child: Center(
                       child: Text(
-                        "Google",
+                        "Continue with Google",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Colors.white,
@@ -205,6 +231,34 @@ class _LoginState extends State<Login> {
                   ],
                 ),
               ),
+              const SizedBox(
+                height: 5,
+              ),
+              // const Center(
+              Row(
+                mainAxisAlignment:
+                    MainAxisAlignment.center, // Center the content horizontally
+                children: [
+                  const Text(
+                    "Don't have an account?",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.grey),
+                  ),
+                  const SizedBox(
+                      width: 5), // Add spacing between texts if needed
+                  GestureDetector(
+                    onTap: () {
+                      _OpenSingupPage(context);
+                    },
+                    child: const Text(
+                      "Signup",
+                      style: TextStyle(color: Colors.green),
+                    ),
+                  ),
+                ],
+              ),
+
+              // ),
             ],
           ),
         ),

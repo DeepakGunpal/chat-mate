@@ -1,4 +1,5 @@
 import 'package:chat_app/Screens/login.dart';
+import 'package:chat_app/Screens/singup.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -40,12 +41,16 @@ class SplashScreenState extends State<SplashScreen>
     _controller.repeat(reverse: true);
   }
 
-  _OpenLoginPage(BuildContext context) async {
+  _OpenLoginPage(BuildContext context, String pageName) async {
+    Widget page = Login();
+    if (pageName == "Signup") {
+      page = Singupscreen();
+    }
     print("Login function started");
     Navigator.of(context).push(
       // MaterialPageRoute(builder: (BuildContext context)=>const Login())
       PageRouteBuilder(
-        pageBuilder: (context, animation, secondaryAnimation) => const Login(),
+        pageBuilder: (context, animation, secondaryAnimation) => page,
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
           const begin = 0.0;
           const end = 1.0;
@@ -126,7 +131,7 @@ class SplashScreenState extends State<SplashScreen>
                         children: [
                           FilledButton(
                             onPressed: () {
-                              _OpenLoginPage(context);
+                              _OpenLoginPage(context, "Signup");
                             },
                             child: const Column(
                               children: [
@@ -154,7 +159,7 @@ class SplashScreenState extends State<SplashScreen>
                                 backgroundColor: Colors.white,
                                 foregroundColor: Colors.black),
                             onPressed: () {
-                              _OpenLoginPage(context);
+                              _OpenLoginPage(context, "Login");
                             },
                             child: const Column(
                               children: [
