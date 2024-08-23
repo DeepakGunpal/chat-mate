@@ -1,4 +1,5 @@
 import 'package:chat_app/Screens/login.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Singupscreen extends StatefulWidget {
@@ -8,9 +9,14 @@ class Singupscreen extends StatefulWidget {
 }
 
 class _SingupscreenState extends State<Singupscreen> {
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  bool peakPassword = true;
+  Widget eyeValue = const Icon(CupertinoIcons.eye_fill);
+
   _OpenSingupPage(BuildContext context) async {
     print("Login function started");
-    Navigator.of(context).push(
+    Navigator.of(context).pushReplacement(
       // MaterialPageRoute(builder: (BuildContext context)=>const Login())
       PageRouteBuilder(
         pageBuilder: (context, animation, secondaryAnimation) => const Login(),
@@ -43,7 +49,7 @@ class _SingupscreenState extends State<Singupscreen> {
 
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(21, 0, 21, 0),
+          padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
           child: Column(
             children: [
               const Row(
@@ -124,7 +130,7 @@ class _SingupscreenState extends State<Singupscreen> {
                             width: 40), // Space between image and text fields
 
                         // Flexible Column for TextFields
-                        const Flexible(
+                        Flexible(
                           flex:
                               3, // Adjust the ratio of space the TextFields take (e.g., 3/4)
                           child: Column(
@@ -132,7 +138,7 @@ class _SingupscreenState extends State<Singupscreen> {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Row(
+                                  const Row(
                                     children: [
                                       Text(
                                         "Email",
@@ -143,11 +149,12 @@ class _SingupscreenState extends State<Singupscreen> {
                                       ),
                                     ],
                                   ),
-                                  SizedBox(height: 5),
+                                  const SizedBox(height: 5),
                                   TextField(
-                                    style: TextStyle(
+                                    controller: _usernameController,
+                                    style: const TextStyle(
                                         color: Colors.white, fontSize: 15),
-                                    decoration: InputDecoration(
+                                    decoration: const InputDecoration(
                                       hintText: 'Enter your email',
                                       hintStyle: TextStyle(color: Colors.grey),
                                       border: OutlineInputBorder(
@@ -158,11 +165,11 @@ class _SingupscreenState extends State<Singupscreen> {
                                   ),
                                 ],
                               ),
-                              SizedBox(height: 15),
+                              const SizedBox(height: 15),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Row(
+                                  const Row(
                                     children: [
                                       Text(
                                         "Password",
@@ -173,18 +180,32 @@ class _SingupscreenState extends State<Singupscreen> {
                                       ),
                                     ],
                                   ),
-                                  SizedBox(height: 5),
+                                  const SizedBox(height: 5),
                                   TextField(
-                                    obscureText: true,
-                                    style: TextStyle(
+                                    controller: _passwordController,
+                                    obscureText: peakPassword,
+                                    style: const TextStyle(
                                         color: Colors.white, fontSize: 12),
                                     decoration: InputDecoration(
                                       hintText: 'Enter Password',
-                                      // suffixIcon: InkWell(
-                                      //     // Password visibility toggle logic can go here
-                                      //     ),
-                                      hintStyle: TextStyle(color: Colors.grey),
-                                      border: OutlineInputBorder(
+                                      suffixIcon: InkWell(
+                                        onTap: () {
+                                          setState(() {
+                                            peakPassword = !peakPassword;
+                                          });
+                                        },
+                                        // Display the current eye icon based on peakPassword
+                                        child: Icon(
+                                          peakPassword
+                                              ? CupertinoIcons
+                                                  .eye_fill // Show icon when password is visible
+                                              : CupertinoIcons
+                                                  .eye_slash_fill, // Hide icon when password is hidden
+                                        ),
+                                      ),
+                                      hintStyle:
+                                          const TextStyle(color: Colors.grey),
+                                      border: const OutlineInputBorder(
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(10)),
                                       ),
@@ -249,45 +270,48 @@ class _SingupscreenState extends State<Singupscreen> {
                   ],
                 ),
               ),
-              ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.black,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(5),
-                    side: const BorderSide(
-                      color: Colors.grey,
-                      strokeAlign: BorderSide.strokeAlignInside,
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.black,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5),
+                      side: const BorderSide(
+                        color: Colors.grey,
+                        strokeAlign: BorderSide.strokeAlignInside,
+                      ),
                     ),
                   ),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(0),
-                      child: Image.asset(
-                        "lib/assets/images/google.png",
-                        width: 20,
-                        height: 20,
-                      ),
-                    ),
-
-                    // Add spacing between the icon and text
-                    const Expanded(
-                      // child: Center(
-                      child: Text(
-                        "Continue with Google",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(0),
+                        child: Image.asset(
+                          "lib/assets/images/google.png",
+                          width: 20,
+                          height: 20,
                         ),
                       ),
-                    ),
-                    // ),
-                  ],
+
+                      // Add spacing between the icon and text
+                      const Expanded(
+                        // child: Center(
+                        child: Text(
+                          "Continue with Google",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      // ),
+                    ],
+                  ),
                 ),
               ),
               const SizedBox(
@@ -309,7 +333,7 @@ class _SingupscreenState extends State<Singupscreen> {
                       _OpenSingupPage(context);
                     },
                     child: const Text(
-                      "Signup",
+                      "Login",
                       style: TextStyle(color: Colors.green),
                     ),
                   ),

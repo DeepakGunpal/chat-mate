@@ -17,7 +17,7 @@ class _LoginState extends State<Login> {
 
   _OpenSingupPage(BuildContext context) async {
     print("Login function started");
-    Navigator.of(context).push(
+    Navigator.of(context).pushReplacement(
       // MaterialPageRoute(builder: (BuildContext context)=>const Login())
       PageRouteBuilder(
         pageBuilder: (context, animation, secondaryAnimation) =>
