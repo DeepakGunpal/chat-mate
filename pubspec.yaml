@@ -63,7 +63,7 @@ flutter:
   assets:
     - lib\assets\images\final.jpg
     - lib\assets\images\robot1.png
-    - lib\assets\images\chat.png
+    # - lib\assets\images\chat.png
     - lib\assets\images\shadow.png
     - lib\assets\images\chat2.png
     - lib\assets\images\google.png
