@@ -326,8 +326,7 @@ class _SingupscreenState extends State<Singupscreen> {
                     textAlign: TextAlign.center,
                     style: TextStyle(color: Colors.grey),
                   ),
-                  const SizedBox(
-                      width: 5), // Add spacing between texts if needed
+                  const SizedBox(width: 5),
                   GestureDetector(
                     onTap: () {
                       _OpenSingupPage(context);
