@@ -40,15 +40,15 @@ class _SingupscreenState extends State<Singupscreen> {
 
   @override
   Widget build(BuildContext context) {
-    final _formkey = GlobalKey<FormState>();
+    final formkey = GlobalKey<FormState>();
     var enteredEmail = '';
     var enteredPass = '';
 
-    void _submit() {
-      final isValidated = _formkey.currentState!.validate();
+    void submit() {
+      final isValidated = formkey.currentState!.validate();
 
       if (isValidated) {
-        _formkey.currentState!.save();
+        formkey.currentState!.save();
         print(enteredEmail);
         print(enteredPass);
       }
@@ -65,7 +65,7 @@ class _SingupscreenState extends State<Singupscreen> {
         child: Padding(
           padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
           child: Form(
-            key: _formkey,
+            key: formkey,
             child: Column(
               children: [
                 const Row(
@@ -178,6 +178,7 @@ class _SingupscreenState extends State<Singupscreen> {
                                             !value.contains('@')) {
                                           return "Please enter a valid email address";
                                         }
+                                        return null;
                                       },
                                       onSaved: (value) {
                                         enteredEmail = value!;
@@ -276,7 +277,7 @@ class _SingupscreenState extends State<Singupscreen> {
                             // Adjust the radius as needed
                           ),
                         ),
-                        onPressed: _submit,
+                        onPressed: submit,
                         child: const Center(
                           child: Text(
                             "Login",
