@@ -65,7 +65,7 @@ class _SingupscreenState extends State<Singupscreen> {
                   Text(
                     ' Started',
                     style: TextStyle(
-                      color: Colors.lightGreen,
+                      color: Colors.green,
                       fontSize: 30,
                       fontWeight: FontWeight.bold,
                     ),
@@ -322,7 +322,7 @@ class _SingupscreenState extends State<Singupscreen> {
                     MainAxisAlignment.center, // Center the content horizontally
                 children: [
                   const Text(
-                    "Don't have an account?",
+                    "Already have an Account?",
                     textAlign: TextAlign.center,
                     style: TextStyle(color: Colors.grey),
                   ),
