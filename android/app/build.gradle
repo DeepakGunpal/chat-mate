@@ -1,8 +1,11 @@
 plugins {
     id "com.android.application"
+    // START: FlutterFire Configuration
+    // END: FlutterFire Configuration
     id "kotlin-android"
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id "dev.flutter.flutter-gradle-plugin"
+    id 'com.google.gms.google-services'
 }
 
 def localProperties = new Properties()
@@ -25,7 +28,7 @@ if (flutterVersionName == null) {
 
 
 android {
-    namespace = "com.example.chat_app"
+    namespace = "a.chat.mate"
     compileSdk 34
     ndkVersion = "25.1.8937393"
 
@@ -33,10 +36,12 @@ android {
         sourceCompatibility = JavaVersion.VERSION_21
         targetCompatibility = JavaVersion.VERSION_21
     }
-
+        kotlinOptions {
+        jvmTarget = '21'
+    }
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "com.example.chat_app"
+        applicationId = "a.chat.mate"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
         minSdk = 24
