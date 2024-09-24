@@ -41,7 +41,7 @@ class SplashScreenState extends State<SplashScreen>
     _controller.repeat(reverse: true);
   }
 
-  _OpenLoginPage(BuildContext context, String pageName) async {
+  openLoginPage(BuildContext context, String pageName) async {
     Widget page = const Login();
     if (pageName == "Signup") {
       page = const Singupscreen();
@@ -131,7 +131,7 @@ class SplashScreenState extends State<SplashScreen>
                         children: [
                           FilledButton(
                             onPressed: () {
-                              _OpenLoginPage(context, "Signup");
+                              openLoginPage(context, "Signup");
                             },
                             child: const Column(
                               children: [
@@ -159,7 +159,7 @@ class SplashScreenState extends State<SplashScreen>
                                 backgroundColor: Colors.white,
                                 foregroundColor: Colors.black),
                             onPressed: () {
-                              _OpenLoginPage(context, "Login");
+                              openLoginPage(context, "Login");
                             },
                             child: const Column(
                               children: [
